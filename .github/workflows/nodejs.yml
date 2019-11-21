@@ -1,3 +1,5 @@
+# https://help.github.com/en/actions
+
 # https://github.com/actions
 # https://github.com/actions/checkout
 # https://github.com/actions/setup-node
@@ -23,7 +25,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Tell node & npm versions 
+    - name: Show node & npm versions, environment
       run: |
         node --version
         npm --version
