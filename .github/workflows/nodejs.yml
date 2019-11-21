@@ -1,4 +1,4 @@
-name: Node CI
+name: Node CI on Push
 
 on: [push]
 
@@ -13,16 +13,20 @@ jobs:
         node-version: [8.x, 10.x, 12.x]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Test with Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
       run: |
         node --version
         npm --version
+    - name: Install dependencies
+      run: |
         npm ci
+    - name: Run test
+      run: |
         npm run test
       env:
         CI: true
