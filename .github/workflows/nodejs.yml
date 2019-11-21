@@ -1,3 +1,7 @@
+# https://github.com/actions
+# https://github.com/actions/checkout
+# https://github.com/actions/setup-node
+
 name: Node CI on Push
 
 on: [push]
@@ -19,10 +23,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Possibly upgrade old npm on Windows 
+      if: matrix.os=="windows-latest" && matrix.node-version=="8.x"
+      run: npm install npm@6.4.1
     - name: Tell node & npm versions 
       run: |
         node --version
         npm --version
+        env
     - name: Install dependencies
       run: npm ci
     - name: Run test
