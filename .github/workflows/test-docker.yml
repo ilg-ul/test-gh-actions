@@ -3,17 +3,29 @@ name: Test Docker on Dispatch
 on: repository_dispatch
 
 jobs:
-  test-docker:
-
+  vm:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Show environment
-      run: env
-    - name: Show event
-      run: cat $GITHUB_EVENT_PATH
-    - name: Show Docker
-      run: docker info
-    - name: Run the test script
-      run: bash .github/workflows/action-test-docker.sh
+      - uses: actions/checkout@v1
+      - name: Show environment
+        run: env
+      - name: Show event
+        run: cat $GITHUB_EVENT_PATH
+      - name: Show Docker
+        run: docker info
+      - name: Run the test script
+        run: bash .github/workflows/action-test-docker.sh
+      
+  container:
+    runs-on: ubuntu-latest
+    container: node:10.16-jessie
+    steps:
+      - name: Run in container
+        run: |
+          echo "Greetings from inside the container"
+          uname -a
+          lsb_release -a
+          env
+          ls -l
+          
+          
