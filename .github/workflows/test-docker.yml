@@ -1,4 +1,4 @@
-name: Test Binaries
+name: Test Docker on Dispatch
 
 on: repository_dispatch
 
