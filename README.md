@@ -1,8 +1,12 @@
 # GitHub Actions tests
 
-GitHub Workflows, part of Actions, represent a GitHub integrated 
+GitHub Workflows, part of Actions, represent a GitHub integrated
 solution to CI/CD, able to replace
 the traditional Travis/AppVeyor tests.
+
+The results of the tests are visible at:
+
+- https://github.com/ilg-ul/test-gh-actions/actions
 
 ## Links
 
@@ -11,6 +15,7 @@ the traditional Travis/AppVeyor tests.
 - https://github.com/actions/checkout
 - https://github.com/actions/setup-node
 - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository
+- https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
 
 ## Notes
 
