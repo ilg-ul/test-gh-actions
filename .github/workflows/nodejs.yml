@@ -4,6 +4,9 @@
 # https://github.com/actions/checkout
 # https://github.com/actions/setup-node
 
+# https://docs.github.com/en/actions/guides/building-and-testing-nodejs
+# https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+
 name: Node.js CI on Push
 
 on: 
@@ -18,9 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        # https://docs.github.com/en/actions/guides/building-and-testing-nodejs
         node-version: [10.x, 12.x, 14.x]
-        # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
