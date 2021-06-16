@@ -11,8 +11,6 @@ name: Node.js CI on Push
 
 on: 
   push:
-    paths:
-    - '!.github/**'
 
 jobs:
   npm-test:
