@@ -122,6 +122,14 @@ References:
 - <https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#repository_dispatch>
 - <https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event>
 
+## Windows shell
+
+On windows, the commands are started via the Power Shell:
+
+```yml
+shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+```
+
 ## TODO
 
 ### Caches

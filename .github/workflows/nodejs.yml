@@ -37,6 +37,7 @@ jobs:
       run: |
         node --version
         npm --version
+        bash --version
         env
     - name: Install dependencies
       run: npm ci
