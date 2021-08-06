@@ -12,7 +12,12 @@ name: CI on Push
 on: 
   push:
     branches:
-    - '**'
+      - '**'
+    tags-ignore:
+      - '*.*'
+    paths-ignore:
+      - 'docs/**'
+      - 'README*'
 
 jobs:
   npm-test:

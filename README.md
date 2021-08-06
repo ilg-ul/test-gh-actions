@@ -170,6 +170,20 @@ branches:
 skip_tags: true
 ```
 
+For GitHub Actions, define the `tags-ignore`:
+
+```yml
+on: 
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*'
+    paths-ignore:
+      - 'docs/**'
+      - 'README*'
+```
+
 ### Notifications
 
 In travis there were email notifications for success too:
