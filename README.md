@@ -130,6 +130,14 @@ On windows, the commands are started via the Power Shell:
 shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
 ```
 
+However the Windows environemnt includes a bash from MSYS2, so to
+execute bash scripts, start them explicitly with `bash`:
+
+```yml
+    - name: Say Hello
+      run: bash test/scripts/hello.sh
+```
+
 ## TODO
 
 ### Caches
