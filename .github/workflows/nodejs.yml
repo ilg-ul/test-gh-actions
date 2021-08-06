@@ -52,4 +52,5 @@ jobs:
       run: |
         env
         ls -l /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk || true
+        ls -lL /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk || true
 
