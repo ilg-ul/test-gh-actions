@@ -19,6 +19,5 @@ jobs:
       - run: |
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
-          echo "GITHUB_SHA=${GITHUB_SHA}"
-          echo "GITHUB_REF=${GITHUB_REF}"
-
+          echo "- GITHUB_SHA=${GITHUB_SHA}"
+          echo "- GITHUB_REF=${GITHUB_REF}"
