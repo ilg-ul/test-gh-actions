@@ -49,7 +49,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: List MacOS.sdk folder
-    - run: |
+      run: |
         env
         ls -l /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk || true
 
