@@ -12,7 +12,7 @@ name: CI on Push
 on: 
   push:
     branches:
-        - '**'
+    - '**'
 
 jobs:
   npm-test:
