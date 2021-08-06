@@ -8,12 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilg-ul/test-gh-actions.git"
+    "url": "https://github.com/ilg-ul/test-gh-actions.git"
   },
-  "author": "",
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "https://github.com/ilg-ul/"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ilg-ul/test-gh-actions/issues"
+    "url": "https://github.com/ilg-ul/test-gh-actions/issues/"
   },
   "homepage": "https://github.com/ilg-ul/test-gh-actions#readme"
 }
