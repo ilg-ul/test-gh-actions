@@ -41,6 +41,8 @@ jobs:
         env
     - name: Install dependencies
       run: npm ci
+    - name: Say Hello
+      run: bash test/scripts/hello.sh
     - name: Run test
       run: npm run test
       env:
@@ -54,4 +56,3 @@ jobs:
         env
         ls -l /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk || true
         ls -lL /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk || true
-
