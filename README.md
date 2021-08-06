@@ -186,7 +186,7 @@ on:
 
 ### Notifications
 
-In travis there were email notifications for success too:
+In Travis there were email notifications for success too:
 
 ```yml
 # https://docs.travis-ci.com/user/notifications/#Configuring-email-notifications
@@ -195,6 +195,11 @@ notifications:
     on_success: always # default: change
     on_failure: always # default: always
 ```
+
+For Actions the settings are per user, in the Settings -> Notifications.
+
+Unless **Send notifications for failed workflows only** is enabled,
+notifications are also sent for successful actions.
 
 ### Git depth
 
