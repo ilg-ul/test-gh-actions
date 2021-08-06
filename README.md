@@ -32,8 +32,10 @@ For consistency, the other versions were updated to this syntax too.
 
 ## Manually dispatched actions
 
-These are actions triggered by an external event (like via a script).
-There are two kinds, workflow and repository.
+These are actions triggered by an external event (like via a script
+or in the GitHub web interface).
+
+There are two kind of manually dispatched actions, workflow and repository.
 
 ### Authentication
 
@@ -49,9 +51,14 @@ It needs the **workflow** scope to be enabled.
 
 ### Workflow dispatch actions
 
-- <https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event>
+Used to trigger individual workflow actions. There can be multiple
+actions defined, each with its own .yml file.
 
-They respond to `workflow_dispatch` and may have up to 10 inputs.
+In addition to the .yml defaults, there can be custom inputs passed
+via the triggering event, which also must pass the Git reference.
+
+These actions respond to `workflow_dispatch` events and may have up to
+10 inputs.
 
 ```yml
 on:
@@ -67,10 +74,10 @@ on:
         default: 'The Octoverse'
 ```
 
-To trigger them use a POST request to pass the mandatory Git reference and
-the inputs.
+To trigger them, use a POST request to pass the mandatory **Git reference**
+and possibly any additional **inputs**.
 
-The workflow id is the full file name (like `workflow-dispatch.yml`).
+The **workflow-id** is the full file name (like `workflow-dispatch.yml`).
 
 ```sh
 curl \
@@ -83,17 +90,32 @@ curl \
   https://api.github.com/repos/ilg-ul/test-gh-actions/actions/workflows/workflow-dispatch.yml/dispatches
 ```
 
+References:
+
+- <https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_dispatch>
+- <https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event>
+
 ### Repository dispatch actions
+
+Used to trigger repository related actions.
+
+They respond to `repository_dispatch` events:
 
 ```sh
 curl \
+  --request POST \
   --include \
   --header "Authorization: token ${GITHUB_API_DISPATCH_TOKEN}" \
   --header "Content-Type: application/json" \
-  --header "Accept: application/vnd.github.everest-preview+json" \
+  --header "Accept: application/vnd.github.v3+json" \
   --data '{"event_type": "on-demand-test", "client_payload": {"key": "value"}}' \
   https://api.github.com/repos/ilg-ul/test-gh-actions/dispatches
 ```
+
+References:
+
+- <https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#repository_dispatch>
+- <https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event>
 
 ## TODO
 
@@ -101,13 +123,13 @@ curl \
 
 Enable caching, in Travis and AppVeyor the `node_modules` was cached.
 
-```
+```yml
 cache:
   directories:
     - node_modules # NPM packages
 ```
 
-```
+```yml
 cache:
   - node_modules # NPM packages
 ```
@@ -116,13 +138,13 @@ cache:
 
 In Travis and AppVeyour commits related to tags were skipped:
 
-```
+```yml
 branches:
   except:
     - /^v\d+\.\d+(\.\d+)?([-.]\d+)?$/
 ```
 
-```
+```yml
 # Do not build on tags (GitHub and BitBucket)
 skip_tags: true
 ```
@@ -131,7 +153,7 @@ skip_tags: true
 
 In travis there were email notifications for success too:
 
-```
+```yml
 # https://docs.travis-ci.com/user/notifications/#Configuring-email-notifications
 notifications:
   email:
@@ -143,24 +165,23 @@ notifications:
 
 In Travis and AppVeyour the depth was limited to 3.
 
-```
+```yml
 # https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
 git:
   # Limit the clone depth; default is 50.
   depth: 3
 ```
 
-```
+```yml
 # set clone depth
 clone_depth: 3  # clone entire repository history if not defined
 ```
 
 Actions syntax:
 
-```
+```yml
     - name: Checkout
       uses: actions/checkout@v1
       with:
         fetch-depth: 3
 ```
-
