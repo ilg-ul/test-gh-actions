@@ -178,7 +178,7 @@ on:
     branches:
       - '**'
     tags-ignore:
-      - '*.*'
+      - '**'
     paths-ignore:
       - 'docs/**'
       - 'README*'
