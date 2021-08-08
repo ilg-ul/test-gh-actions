@@ -41,3 +41,8 @@ jobs:
         with:
           entrypoint: /bin/ls
           args: -lLR /github
+      - name: Say hello via script
+        uses: docker://opensuse/tumbleweed
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/test/scripts/hello.sh
