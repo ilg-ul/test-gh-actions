@@ -36,13 +36,18 @@ jobs:
         with:
           entrypoint: /bin/echo
           args: Hello Docker !
-      - name: List
+      - name: List all GitHub mounted folders
         uses: docker://opensuse/tumbleweed
         with:
           entrypoint: /bin/ls
           args: -lLR /github
-      - name: Say hello via script
+      - name: Say hello via repo script from OpenSUSE
         uses: docker://opensuse/tumbleweed
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/test/scripts/hello.sh
+      - name: Say hello via repo script from Debian
+        uses: docker://debian:jessie
         with:
           entrypoint: /bin/bash
           args: /github/workspace/test/scripts/hello.sh
