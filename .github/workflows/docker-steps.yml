@@ -7,7 +7,7 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-name: Docker job
+name: Docker steps
 
 on:
   workflow_dispatch:
