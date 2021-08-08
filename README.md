@@ -95,6 +95,61 @@ curl \
   https://api.github.com/repos/ilg-ul/test-gh-actions/actions/workflows/workflow-dispatch.yml/dispatches
 ```
 
+### Docker images
+
+Docker images can be used:
+
+- per job, when all steps run inside the same container
+- per step, when each step is a command that runs inside a different container
+
+Per job action:
+
+```yaml
+jobs:
+  say_hello:
+    name: Say Hello from Docker image
+    runs-on: ubuntu-latest
+    container: 
+      image: opensuse/tumbleweed
+    steps:
+      - name: Install deps
+        run: |
+          zypper -q in -y git-core curl tar gzip lsb-release binutils
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: Say hello from repo via script
+        run: |
+          bash test/scripts/hello.sh
+```
+
+Per step action:
+
+```yaml
+jobs:
+  say_hello:
+    name: Say Hello from multiple Docker images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: Say hello via repo script from OpenSUSE
+        uses: docker://opensuse/tumbleweed
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/test/scripts/hello.sh
+      - name: Say hello via repo script from Debian
+        uses: docker://debian:jessie
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/test/scripts/hello.sh
+```
+
 References:
 
 - <https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_dispatch>
