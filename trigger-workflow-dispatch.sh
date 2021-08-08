@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+# -----------------------------------------------------------------------------
+# This file is part of the xPack distribution.
+#   (https://xpack.github.io)
+# Copyright (c) 2021 Liviu Ionescu.
+#
+# Permission to use, copy, modify, and/or distribute this software 
+# for any purpose is hereby granted, under the terms of the MIT license.
+# -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
 # Safety settings (see https://gist.github.com/ilg-ul/383869cbb01f61a51c4d).
@@ -34,8 +42,28 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
+tmp_path=$(mktemp)
+rm -rf "${tmp_path}"
+
+# Note: __EOF__ is NOT quoted to allow substitutions.
+cat <<__EOF__ > "${tmp_path}"
+{
+  "ref": "master", 
+  "inputs": {
+    "name": "Baburiba"
+  }
+}
+__EOF__
+
+echo
+echo "Request body:"
+cat "${tmp_path}"
+
 # This script requires an authentication token in the environment.
 # https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
+
+echo
+echo "Response:"
 
 curl \
   --request POST \
@@ -43,5 +71,8 @@ curl \
   --header "Authorization: token ${GITHUB_API_DISPATCH_TOKEN}" \
   --header "Content-Type: application/json" \
   --header "Accept: application/vnd.github.v3+json" \
-  --data '{"ref": "master", "inputs": {"name": "Baburiba"}}' \
+  --data-binary @"${tmp_path}" \
   https://api.github.com/repos/ilg-ul/test-gh-actions/actions/workflows/workflow-dispatch.yml/dispatches
+
+rm -rf "${tmp_path}"
+
