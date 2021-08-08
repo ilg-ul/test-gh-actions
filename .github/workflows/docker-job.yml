@@ -36,7 +36,7 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - name: Say hello
+      - name: Say hello from repo via script
         run: |
           pwd
           ls -lL
