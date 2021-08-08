@@ -27,6 +27,9 @@ jobs:
     container: 
       image: opensuse/tumbleweed
     steps:
+      - name: Install deps
+        run: |
+          zypper -q in -y git-core curl tar gzip lsb-release binutils
       - name: Checkout
         uses: actions/checkout@v2
         with:
