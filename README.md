@@ -65,7 +65,7 @@ via the triggering event, which also must pass the Git reference.
 These actions respond to `workflow_dispatch` events and may have up to
 10 inputs.
 
-```yml
+```yaml
 on:
   workflow_dispatch:
     inputs:
@@ -126,14 +126,14 @@ References:
 
 On windows, the commands are started via the Power Shell:
 
-```yml
+```yaml
 shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
 ```
 
 However the Windows environemnt includes a bash from MSYS2, so to
 execute bash scripts, start them explicitly with `bash`:
 
-```yml
+```yaml
     - name: Say Hello
       run: bash test/scripts/hello.sh
 ```
@@ -144,13 +144,13 @@ execute bash scripts, start them explicitly with `bash`:
 
 Enable caching, in Travis and AppVeyor the `node_modules` was cached.
 
-```yml
+```yaml
 cache:
   directories:
     - node_modules # NPM packages
 ```
 
-```yml
+```yaml
 cache:
   - node_modules # NPM packages
 ```
@@ -159,20 +159,20 @@ cache:
 
 In Travis and AppVeyour commits related to tags were skipped:
 
-```yml
+```yaml
 branches:
   except:
     - /^v\d+\.\d+(\.\d+)?([-.]\d+)?$/
 ```
 
-```yml
+```yaml
 # Do not build on tags (GitHub and BitBucket)
 skip_tags: true
 ```
 
 For GitHub Actions, define the `tags-ignore`:
 
-```yml
+```yaml
 on: 
   push:
     branches:
@@ -188,7 +188,7 @@ on:
 
 In Travis there were email notifications for success too:
 
-```yml
+```yaml
 # https://docs.travis-ci.com/user/notifications/#Configuring-email-notifications
 notifications:
   email:
@@ -205,21 +205,21 @@ notifications are also sent for successful actions.
 
 In Travis and AppVeyour the depth was limited to 3.
 
-```yml
+```yaml
 # https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
 git:
   # Limit the clone depth; default is 50.
   depth: 3
 ```
 
-```yml
+```yaml
 # set clone depth
 clone_depth: 3  # clone entire repository history if not defined
 ```
 
 Actions syntax:
 
-```yml
+```yaml
     - name: Checkout
       uses: actions/checkout@v1
       with:
