@@ -40,4 +40,4 @@ jobs:
         uses: docker://opensuse/tumbleweed
         with:
           entrypoint: /bin/ls
-          args: -lL /github/workflow
+          args: -lLR /github
