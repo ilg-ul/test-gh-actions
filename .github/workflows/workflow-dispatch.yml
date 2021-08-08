@@ -23,6 +23,7 @@ on:
 
 jobs:
   say_hello:
+    name: Say Hello from Linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

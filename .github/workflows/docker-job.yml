@@ -23,6 +23,7 @@ on:
 
 jobs:
   say_hello:
+    name: Say Hello from Docker image
     runs-on: ubuntu-latest
     container: 
       image: opensuse/tumbleweed
