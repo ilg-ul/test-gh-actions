@@ -45,7 +45,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 echo pwd=$(pwd)
 
 echo
-echo "Hello!"
+echo "Hello from ${script_name}!"
 
 exit 0
 
