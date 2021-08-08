@@ -35,10 +35,13 @@ jobs:
         with:
           fetch-depth: 3
           submodules: true
-      - run: |
+      - name: Say hello
+        run: |
           pwd
           ls -lL
           echo "Hello ${{ github.event.inputs.name }} from docker!"
           echo "- in ${{ github.event.inputs.home }}!"
           echo "- GITHUB_SHA=${GITHUB_SHA}"
           echo "- GITHUB_REF=${GITHUB_REF}"
+          echo
+          bash test/scripts/hello.sh
