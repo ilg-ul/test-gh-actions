@@ -25,8 +25,18 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: Say hello
+        run: |
+          pwd
+          ls -lL
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
           echo "- GITHUB_SHA=${GITHUB_SHA}"
           echo "- GITHUB_REF=${GITHUB_REF}"
+          echo
+          bash test/scripts/hello.sh
