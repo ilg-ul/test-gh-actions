@@ -36,3 +36,8 @@ jobs:
         with:
           entrypoint: /bin/echo
           args: Hello Docker !
+      - name: Say hello from script
+        uses: docker://opensuse/tumbleweed
+        with:
+          entrypoint: /bin/bash
+          args: /github/workflow/test/scripts/hello.sh
