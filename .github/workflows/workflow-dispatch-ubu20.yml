@@ -7,7 +7,7 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-name: Manually triggered workflow
+name: Manually triggered workflow on self-hosted
 
 on:
   workflow_dispatch:
@@ -23,8 +23,8 @@ on:
 
 jobs:
   say_hello:
-    name: Say Hello from Linux
-    runs-on: self-hosted
+    name: Say Hello from Linux self-hosted runner
+    runs-on: [self-hosted, linux, x64, my-label]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
