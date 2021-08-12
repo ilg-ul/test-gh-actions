@@ -193,6 +193,29 @@ execute bash scripts, start them explicitly with `bash`:
       run: bash test/scripts/hello.sh
 ```
 
+## Self-hosted runners
+
+To add a new self-hosted runenr, Settings -> Actions -> Runners
+
+- <https://github.com/ilg-ul/test-gh-actions/settings/actions/runners/new>
+
+To configure & start it, on the host (with a dark console):
+
+```sh
+cd actions-runner
+./config.sh --url https://github.com/ilg-ul/test-gh-actions --token XXXX
+./run.sh
+```
+
+The default name is `self-hosted`, `Linux`, `X64`; add a custom label
+(like `my-label`) and refer to it in the workflow.
+
+The default work folder is `_work`.
+
+```yaml
+runs-on: [self-hosted, linux, x64, my-label]
+```
+
 ## TODO
 
 ### Caches
