@@ -1,0 +1,43 @@
+# -----------------------------------------------------------------------------
+# This file is part of the xPack distribution.
+#   (https://xpack.github.io)
+# Copyright (c) 2021 Liviu Ionescu.
+#
+# Permission to use, copy, modify, and/or distribute this software 
+# for any purpose is hereby granted, under the terms of the MIT license.
+# -----------------------------------------------------------------------------
+
+name: Manually triggered workflow on self-hosted
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
+
+jobs:
+  say_hello:
+    name: Say Hello from Linux self-hosted runner
+    runs-on: [self-hosted, linux, Arm]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: Say hello
+        run: |
+          pwd
+          ls -lL
+          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "- in ${{ github.event.inputs.home }}!"
+          echo "- GITHUB_SHA=${GITHUB_SHA}"
+          echo "- GITHUB_REF=${GITHUB_REF}"
+          echo
+          bash test/scripts/hello.sh
