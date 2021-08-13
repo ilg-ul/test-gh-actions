@@ -7,7 +7,7 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-name: Manually triggered workflow on self-hosted
+name: Manually triggered workflow on self-hosted Arm
 
 on:
   workflow_dispatch:

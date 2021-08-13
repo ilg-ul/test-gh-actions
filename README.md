@@ -207,14 +207,19 @@ cd actions-runner
 ./run.sh
 ```
 
-The default name is `self-hosted`, `Linux`, `X64`; add a custom label
-(like `my-label`) and refer to it in the workflow.
+The default name is `self-hosted`, `Linux`, `X64`; add optionally
+a custom label (like `xbba`, `xbbi`) to be sure some workflows
+reach the specific machines.
 
 The default work folder is `_work`.
 
 ```yaml
-runs-on: [self-hosted, linux, x64, my-label]
+runs-on: [self-hosted, linux, x64]
+
+runs-on: [self-hosted, linux, Arm64]
 ```
+
+---
 
 ## TODO
 

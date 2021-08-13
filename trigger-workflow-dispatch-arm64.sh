@@ -72,7 +72,7 @@ curl \
   --header "Content-Type: application/json" \
   --header "Accept: application/vnd.github.v3+json" \
   --data-binary @"${tmp_path}" \
-  https://api.github.com/repos/ilg-ul/test-gh-actions/actions/workflows/workflow-dispatch-arm.yml/dispatches
+  https://api.github.com/repos/ilg-ul/test-gh-actions/actions/workflows/workflow-dispatch-arm64.yml/dispatches
 
 rm -rf "${tmp_path}"
 
