@@ -207,6 +207,12 @@ cd actions-runner
 ./run.sh
 ```
 
+To remove the runner:
+
+```sh
+./config.sh remove
+```
+
 The default name is `self-hosted`, `Linux`, `X64`; add optionally
 a custom label (like `xbba`, `xbbi`) to be sure some workflows
 reach the specific machines.
